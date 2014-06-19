@@ -9,6 +9,7 @@
 \LoadClass[a4paper]{article}
 
 \RequirePackage{fancyhdr}
+\RequirePackage{fontawesome}
 % Load last because it has the hyperref loading in it
 \RequirePackage{imperial-common}
 
@@ -70,6 +71,17 @@
 \spaceskip\multiply\xspaceskip\thr@@\divide\xspaceskip\tw@
 \hyphenpenalty\@medpenalty\exhyphenpenalty\@highpenalty\let\informal\relax}
 
+\newcommand{\dept}{}
+\newcommand{\setdept}[1]{\renewcommand{\dept}{#1}}
+\newcommand{\telephone}{}
+\newcommand{\settelephone}[1]{\renewcommand{\telephone}{#1}}
+\newcommand{\fax}{}
+\newcommand{\setfax}[1]{\renewcommand{\fax}{#1}}
+\newcommand{\email}{}
+\newcommand{\setemail}[1]{\renewcommand{\email}{#1}}
+\newcommand{\web}{}
+\newcommand{\setweb}[1]{\renewcommand{\web}{#1}}
+
 % Header for personalised letterhead consists of a table with
 % one paragraph box
 \newcommand{\header}[2]{
@@ -114,14 +126,21 @@
   \begin{minipage}[t]{90mm}
   \vspace*{-41.3mm}
   \fontsize{9}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  #3
+  \dept\\
+  \college\\
+
+  South Kensington Campus, London, SW7 2AZ, UK\\
+  \faPhone\ \telephone, Fax \fax\\
+
+  \faEnvelope\ \href{mailto:\email}{\email}\\
+  \href{http://\web}{\web}\\
   \vspace*{4mm}\\
   \fontsize{11}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  \textbf{#4}
+  \textbf{#3}
   \fontsize{7}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  #5
+  #4
   \fontsize{9}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  #6
+  #5
   \end{minipage}
  \end{tabular}
 }
