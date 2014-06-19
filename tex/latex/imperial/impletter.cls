@@ -1,19 +1,22 @@
 % Imperial College London letterhead class
 % LdC Foulkes January 2003
+% 
+% Modified by James Keirstead, June 2014
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{impletter}[2003/15/01 Imperial College Letter]
+\ProvidesClass{impletter}[2014/06/19 Imperial College Letter]
 
-\RequirePackage{graphics}
-%\RequirePackage{epstopdf}
-\RequirePackage{fancyhdr}
 \LoadClass[a4paper]{article}
+
+\RequirePackage{fancyhdr}
+% Load last because it has the hyperref loading in it
+\RequirePackage{imperial-common}
 
 % Blank paper
 \DeclareOption{blank}{%
 	\pagestyle{fancy}
 	\lhead{%
-	\resizebox{52.5mm}{!}{\includegraphics{imperial}}}%
+	\resizebox{52.5mm}{!}{\includegraphics{\imperiallogo}}}%
 	\renewcommand\headrulewidth{0pt}
 	\lfoot{%
 	\vspace*{10.5mm}
@@ -22,7 +25,7 @@
 	Imperial College of Science, Technology and Medicine}%
 	\cfoot{}
 }%
-% Personalised letterhead paper
+% % Personalised letterhead paper
 \DeclareOption{headed}{%
 	\pagestyle{empty}
 }%
@@ -41,7 +44,7 @@
 \ProcessOptions\relax
 
 % Set the appropriate font type, font size, and lengths
-\renewcommand{\normalsize}{\fontsize{12}{16pt}}%\usefont{OT1}{cmss}{m}{n}}
+%\renewcommand{\normalsize}{\fontsize{12}{16pt}}%\usefont{OT1}{cmss}{m}{n}}
 \setlength{\paperheight}{297mm}
 \setlength{\paperwidth}{210mm}
 \setlength{\voffset}{-25.4mm}
@@ -60,15 +63,8 @@
 \hbadness=10000 % Ignore underfull boxes
 \hfuzz=28mm % Allow over the margin text - needed for sender details
 
-% Define date in european format
-\def\today{\number\day\space\ifcase\month\or
- January\or February \or March\or April\or May\or June\or
- July\or August\or September\or October\or November\or December\fi
- \space\number\year}
-
 %\informal is like ragged right, but allows hyphen breaks and does not
 %produce such extreme differences in line lengths.
-
 \def\informal{\rightskip\z@ plus\tw@ em\dimen@\the\fontdimen4\the
 \font\spaceskip\the\fontdimen\tw@\the\font minus .6\dimen@\xspaceskip
 \spaceskip\multiply\xspaceskip\thr@@\divide\xspaceskip\tw@
