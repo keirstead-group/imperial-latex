@@ -9,6 +9,7 @@
 \LoadClass[a4paper]{article}
 
 \RequirePackage{fancyhdr}
+\RequirePackage{ifthen}
 \RequirePackage{fontawesome}
 % Load last because it has the hyperref loading in it
 \RequirePackage{imperial-common}
@@ -90,6 +91,10 @@
 \newcommand{\setpostnoms}[1]{\renewcommand{\postnoms}{#1}}
 \newcommand{\jobtitle}{}
 \newcommand{\setjobtitle}[1]{\renewcommand{\jobtitle}{#1}}
+\newcommand{\signature}{}
+\newcommand{\setsignature}[1]{\renewcommand{\signature}{#1}}
+\newlength{\sigwidth}
+\setlength{\sigwidth}{2in}
 
 % Header for personalised letterhead consists of a table with
 % one paragraph box
@@ -104,7 +109,7 @@
 
   \vspace*{1mm}
   #1 % addressee at 63mm
-
+  
   \vspace*{8mm}
   #2 % salutation at 105
 
@@ -159,7 +164,11 @@
 \begin{minipage}[t]{100mm}
 #1
 
-\vspace{18mm}
+\ifthenelse{\equal{\signature}{}}{%
+  \vspace{18mm}
+}{%
+  \includegraphics[width=\sigwidth]{\signature}
+}
 
 \@author
 \end{minipage}
