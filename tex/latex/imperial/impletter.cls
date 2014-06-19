@@ -88,6 +88,8 @@
 \newcommand{\settitle}[1]{\renewcommand{\nametitle}{#1}}
 \newcommand{\postnoms}{}
 \newcommand{\setpostnoms}[1]{\renewcommand{\postnoms}{#1}}
+\newcommand{\jobtitle}{}
+\newcommand{\setjobtitle}[1]{\renewcommand{\jobtitle}{#1}}
 
 % Header for personalised letterhead consists of a table with
 % one paragraph box
@@ -111,7 +113,7 @@
 }
 
 % Header for logo and blank paper consists of a table with two paragraph boxes.
-\newcommand{\headers}[6]{
+\newcommand{\headers}[2]{
  \begin{tabular}{@{}p{95mm}@{}p{90mm}}
   % left box with date, address and salutation
   \vspace*{-3.5mm}
@@ -147,7 +149,7 @@
   \fontsize{7}{11pt}%\usefont{OT1}{cmss}{m}{n}
   \textsc{\postnoms}\\
   \fontsize{9}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  #3
+  \jobtitle\\
   \end{minipage}
  \end{tabular}
 }
