@@ -71,8 +71,11 @@
 \spaceskip\multiply\xspaceskip\thr@@\divide\xspaceskip\tw@
 \hyphenpenalty\@medpenalty\exhyphenpenalty\@highpenalty\let\informal\relax}
 
+
 \newcommand{\dept}{}
 \newcommand{\setdept}[1]{\renewcommand{\dept}{#1}}
+\newcommand{\address}{}
+\newcommand{\setaddress}[1]{\renewcommand{\address}{#1}}
 \newcommand{\telephone}{}
 \newcommand{\settelephone}[1]{\renewcommand{\telephone}{#1}}
 \newcommand{\fax}{}
@@ -129,7 +132,7 @@
   \dept\\
   \college\\
 
-  South Kensington Campus, London, SW7 2AZ, UK\\
+  \address\\
   \faPhone\ \telephone, Fax \fax\\
 
   \faEnvelope\ \href{mailto:\email}{\email}\\
