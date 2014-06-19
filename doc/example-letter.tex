@@ -1,8 +1,37 @@
 % This LaTeX file uses the class impletter.cls to format
 % the new Imperial College letter to be printed on blank paper.
+%
 % LdC Foulkes Jan. 2003.
+% Modified by James Keirstead, June 2014
+%
 
+% Compilation may complain about a missing *.aux file.  If compiling
+% with pdflatex, just use the normal interactive mode and hit return
+% at the prompt for a new file name; the PDF should be produced
+% without a problem.  If using xelatex, you can skip over this by
+% adding the nonstopmode option (for some reason, this doesn't work
+% with pdflatex).
 \documentclass[blank]{impletter}
+
+%%%%%%%%%%% Basic settings %%%%%%%%%%%%%
+% 
+% Information about who sent the letter
+\setdept{Department of Aeronautics}
+\setaddress{South Kensington Campus, London, SW7 2AZ, UK}
+\settelephone{+44 (0)20 7594 5048}
+\setfax{+44 (0)20 7584 8120}
+\setemail{l.foulkes@imperial.ac.uk}
+% http:// not required here
+\setweb{www.imperial.ac.uk/aeronautics}
+\settitle{Dr}
+\author{Letty Foulkes}
+\setpostnoms{BA, MS, PhD, CPhys, MInstP}
+\setjobtitle{Computer Resources Manager}
+% If the signature is not defined, a blank space will be left for a signature
+% http://commons.wikimedia.org/wiki/File:Isambard_Kingdom_Brunel_signature.png
+\setsignature{Isambard_Kingdom_Brunel_signature.png}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%% Adjustment Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The letter has to have have the following (measured from the top):
@@ -33,6 +62,7 @@
 \addtolength{\footskip}{0mm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{document}
 
 \headers{
@@ -46,32 +76,6 @@ Address Line 4\\
 % Replace with the salutation for this letter
 {
 Dear Sir or Madam,
-}
-% Replace with your department, address, telephone, fax and e-mail.
-% Do not remove the blank lines.
-{
-Department of Aeronautics,\\
-Imperial College London\\
-
-% Could add a line with the room number and building here
-% and end the new line with \\
-South Kensington Campus, London SW7 2AZ, UK\\
-Telephone +44 (0)20 7594 5048 Fax +44 (0)20 7584 8120\\
-
-l.foulkes@imperial.ac.uk\\
-www.imperial.ac.uk/aeronautics\\
-}
-% Replace with your name
-{
-Dr Letty Foulkes
-}
-% Replace with your qualifications
-{
-BA, MS, PhD, CPhys, MinstP\\
-}
-% Replace with your job title. A second line can be added if necessary.
-{
-Computer Resources Manager\\
 }
 \informal
 
@@ -128,8 +132,5 @@ computer.
 % printed at the bottom, but do not remove the {}.
 \close{
 Yours sincerely,
-}
-{
-Letty Foulkes
 }
 \end{document}
