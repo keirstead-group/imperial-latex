@@ -84,6 +84,10 @@
 \newcommand{\setemail}[1]{\renewcommand{\email}{#1}}
 \newcommand{\web}{}
 \newcommand{\setweb}[1]{\renewcommand{\web}{#1}}
+\newcommand{\nametitle}{}
+\newcommand{\settitle}[1]{\renewcommand{\nametitle}{#1}}
+\newcommand{\postnoms}{}
+\newcommand{\setpostnoms}[1]{\renewcommand{\postnoms}{#1}}
 
 % Header for personalised letterhead consists of a table with
 % one paragraph box
@@ -139,23 +143,23 @@
   \href{http://\web}{\web}\\
   \vspace*{4mm}\\
   \fontsize{11}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  \textbf{#3}
+  \textbf{\nametitle\ \@author}
   \fontsize{7}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  #4
+  \textsc{\postnoms}\\
   \fontsize{9}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  #5
+  #3
   \end{minipage}
  \end{tabular}
 }
 
 % Command to add the closing and sender's name
-\newcommand{\close}[2]{
+\newcommand{\close}[1]{
 \begin{minipage}[t]{100mm}
 #1
 
 \vspace{18mm}
 
-#2
+\@author
 \end{minipage}
 }
 
