@@ -35,7 +35,17 @@
   \PackageWarning{Custom fonts not supported.  Please use xelatex instead.}
 \fi
 
-% TODO change this to a font declaration
-
 % Set up hyperref style
-% \RequirePackage{hyperref}
+\RequirePackage{hyperref}
+\hypersetup{draft=false,%
+	bookmarks=true,%
+	pageanchor=true,%
+	bookmarksnumbered=true,	%
+        bookmarksopen=false,%
+	colorlinks=true,%
+	linkcolor=ImperialBlue,%
+	urlcolor=ImperialBrown,%
+	anchorcolor=black,%
+	filecolor=black,%
+	menucolor=black,%
+	citecolor=black}
