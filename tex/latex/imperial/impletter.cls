@@ -10,7 +10,14 @@
 
 \RequirePackage{fancyhdr}
 \RequirePackage{ifthen}
-\RequirePackage{fontawesome}
+\RequirePackage{ifxetex}
+\ifxetex
+  \RequirePackage{fontawesome}
+\else
+  \newcommand{\faPhone}{Tel}
+  \newcommand{\faEnvelope}{}
+\fi
+
 % Load last because it has the hyperref loading in it
 \RequirePackage{imperial-common}
 
@@ -145,9 +152,10 @@
   \address\\
   \faPhone\ \telephone\ifthenelse{\equal{\fax}{}}{}{, Fax \fax}\\
 
-  \faEnvelope\ \href{mailto:\email}{\email}\\
-  \href{http://\web}{\web}\\
-  \vspace*{4mm}\\
+  \faEnvelope\ \href{mailto:\email}{\textcolor{black}{\email}}\\
+  \href{http://\web}{\textcolor{black}{\web}}\\
+%  \vspace*{4mm}\\
+
   \fontsize{11}{11pt}%\usefont{OT1}{cmss}{m}{n}
   \textbf{\nametitle\ \@author}
   \fontsize{7}{11pt}%\usefont{OT1}{cmss}{m}{n}
