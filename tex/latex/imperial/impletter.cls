@@ -72,7 +72,6 @@
 \spaceskip\multiply\xspaceskip\thr@@\divide\xspaceskip\tw@
 \hyphenpenalty\@medpenalty\exhyphenpenalty\@highpenalty\let\informal\relax}
 
-
 \newcommand{\dept}{}
 \newcommand{\setdept}[1]{\renewcommand{\dept}{#1}}
 \newcommand{\address}{}
@@ -144,7 +143,7 @@
   \college\\
 
   \address\\
-  \faPhone\ \telephone, Fax \fax\\
+  \faPhone\ \telephone\ifthenelse{\equal{\fax}{}}{}{, Fax \fax}\\
 
   \faEnvelope\ \href{mailto:\email}{\email}\\
   \href{http://\web}{\web}\\
