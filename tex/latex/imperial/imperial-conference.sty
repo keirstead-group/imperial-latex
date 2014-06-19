@@ -1,0 +1,27 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{imperial-conference}[2013/01/09 Imperial College conference style]
+
+% Load require packages
+\input{imperial-beamer-style.tex}
+
+\newcommand{\myconf}{}
+\newcommand{\conference}[1]{\renewcommand{\myconf}{#1}}
+\setbeamertemplate{title page}{
+  \vbox{}
+  \vskip1em
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%     
+  \vskip1em\par
+  {\small\insertauthor\par
+  \insertinstitute\par
+  \vskip10em\par
+   \myconf\par
+  \insertdate\par}
+
+}
+

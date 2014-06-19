@@ -1,0 +1,135 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+% Modified by James Keirstead for Imperial College style files
+
+% Common packages
+\usepackage{imperial-common}
+\usepackage{calc}
+
+% Color hyperlinks
+\hypersetup{colorlinks=true,linkcolor=ImperialBlue,citecolor=ImperialBrown,urlcolor=black!50}
+
+% \usepackage[german]{babel}
+% \usepackage[latin1]{inputenc}
+% \usepackage{times}
+\mode<article>
+{
+%  \usepackage{times}
+%  \usepackage{mathptmx}
+  \usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
+}
+
+% Sets title and PDF subject field
+\institute{\college}
+
+% Beamer version theme settings
+% \useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=ImperialBlue}
+\setbeamercolor{author}{parent=structure}
+
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{author in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+
+\logo{\includegraphics[width=2cm]{\imperiallogo}}
+
+% Article version layout settings
+\mode<article>
+
+\makeatletter
+\def\@listI{\leftmargin\leftmargini
+  \parsep 0pt
+  \topsep 5\p@   \@plus3\p@ \@minus5\p@
+  \itemsep0pt}
+\let\@listi=\@listI
+
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+
+\setlength{\marginparwidth}{1cm}
+\setlength{\marginparsep}{4.5cm}
+
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{ImperialBlue}\selectfont}}
+
+\makeatother
+
+
+% Settings for all modes
+\mode
+<all>
+
+% Typesetting Listings
+\usepackage{listings}
+\lstset{language=Java}
+
+\alt<presentation>
+{\lstset{%
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\slshape\color{green!50!black},
+  keywordstyle=\bfseries\color{ImperialBlue!50!black},
+  identifierstyle=\color{ImperialBlue},
+  stringstyle=\color{orange},
+  escapechar=\#,
+  emphstyle=\color{red}}
+}
+{
+  \lstset{%
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape,
+    escapechar=\#,
+    emphstyle=\bfseries\color{red}
+  }
+}
+
+
+
+% Common theorem-like environments
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Exercise}}
+
+
+% New useful definitions:
+\newbox\mytempbox
+\newdimen\mytempdimen
+
+\newcommand\includegraphicscopyright[3][]{%
+  \leavevmode\vbox{\vskip3pt\raggedright\setbox\mytempbox=\hbox{\includegraphics[#1]{#2}}%
+    \mytempdimen=\wd\mytempbox\box\mytempbox\par\vskip1pt%
+    {\fontsize{5}{6}\selectfont{\color{black!75}{\vbox{\hsize=\mytempdimen#3}}}}\vskip3pt%
+}}
+
+\newenvironment{colortabular}[1]{\medskip\rowcolors[]{1}{ImperialBlue!20}{ImperialBlue!10}\tabular{#1}\rowcolor{ImperialBlue!40}}{\endtabular\medskip}
+
+\def\equad{\leavevmode\hbox{}\quad}
+
+\newenvironment{greencolortabular}[1]
+{\medskip\rowcolors[]{1}{green!50!black!20}{green!50!black!10}%
+  \tabular{#1}\rowcolor{green!50!black!40}}%
+{\endtabular\medskip}
+
+
+
+

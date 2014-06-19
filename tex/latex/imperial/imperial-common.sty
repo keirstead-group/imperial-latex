@@ -1,0 +1,35 @@
+% Defines common elements for Imperial College LaTeX styles
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{imperial-common}[2013/01/09 Imperial College common package]
+
+% Define logo
+\RequirePackage{graphicx}
+\newcommand{\imperiallogo}{imperial-logo}
+
+% Define colors
+\RequirePackage{color}
+\definecolor{ImperialBlue}{rgb}{0.082,0.416,0.608}
+\definecolor{ImperialLightBlue}{rgb}{0.545,0.682,0.8}
+\definecolor{ImperialBrown}{rgb}{0.612,0.278,0.086}
+
+% Defines fonts
+\RequirePackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{sansmath}
+\sansmath
+
+% A hack to work with Sans Math?
+\renewcommand{\Delta}{\ensuremath{\triangle}}
+
+% Define names
+\newcommand{\college}{Imperial College London}
+
+% Change date style
+\RequirePackage{datetime}
+\newdateformat{UKdate}{\THEDAY\ \monthname[\THEMONTH]\ \THEYEAR}
+\UKdate
+
+% Set up hyperref style
+\RequirePackage{hyperref}
