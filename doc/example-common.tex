@@ -1,0 +1,25 @@
+\documentclass[a4paper]{article}
+
+\usepackage{imperial-common}
+
+\begin{document}
+
+\section*{Logo}
+
+\includegraphics{\imperiallogo}
+
+\section*{Colors}
+This is \textcolor{ImperialBlue}{Imperial Blue} and this is \textcolor{ImperialLightBlue}{Imperial Light Blue}; \textcolor{ImperialBrown}{Imperial Brown} is the complement of Imperial Blue.
+
+\section*{Dates}
+This is today's date in UK format: \today.
+
+\section*{Constants}
+Some text constants: \dept, \college.
+
+\section*{Fonts}
+The normal font should be in Minion Pro and \textsf{the sans font is Arial}.  The mono-spaced font is \texttt{Consolas}.  This will only work if the document is compiled with \texttt{xelatex}.
+
+\section*{Hyperref}
+Here's a link within a document\footnote{Test footnote}.  And here's an \href{http://www.guardian.co.uk}{external link}.
+\end{document}

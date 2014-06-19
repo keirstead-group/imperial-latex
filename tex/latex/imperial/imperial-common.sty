@@ -1,35 +1,51 @@
 % Defines common elements for Imperial College LaTeX styles
+% James Keirstead
+% 19 June 2014
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{imperial-common}[2013/01/09 Imperial College common package]
+\ProvidesPackage{imperial-common}[2014/06/19 Imperial College common package]
 
 % Define logo
 \RequirePackage{graphicx}
 \newcommand{\imperiallogo}{imperial-logo}
 
 % Define colors
-\RequirePackage{color}
+\RequirePackage{xcolor}
 \definecolor{ImperialBlue}{rgb}{0.082,0.416,0.608}
 \definecolor{ImperialLightBlue}{rgb}{0.545,0.682,0.8}
 \definecolor{ImperialBrown}{rgb}{0.612,0.278,0.086}
-
-% Defines fonts
-\RequirePackage[T1]{fontenc}
-\usepackage[scaled]{helvet}
-\renewcommand*\familydefault{\sfdefault}
-\usepackage{sansmath}
-\sansmath
-
-% A hack to work with Sans Math?
-\renewcommand{\Delta}{\ensuremath{\triangle}}
-
-% Define names
-\newcommand{\college}{Imperial College London}
 
 % Change date style
 \RequirePackage{datetime}
 \newdateformat{UKdate}{\THEDAY\ \monthname[\THEMONTH]\ \THEYEAR}
 \UKdate
 
+% Define some constants
+\newcommand{\college}{Imperial College London}
+\newcommand{\dept}{Dept.\ of Civil and Environmental Engineering}
+
+% Defines fonts
+\RequirePackage{ifxetex}
+\ifxetex
+  \RequirePackage{fontspec}
+  \setmainfont[Mapping=tex-text]{Minion Pro}
+  \setsansfont[Mapping=tex-text, Scale=0.875]{Arial}
+  \setmonofont[Scale=0.9]{Consolas}
+\else
+  \PackageWarning{Custom fonts not supported.  Please use xelatex instead.}
+\fi
+
 % Set up hyperref style
 \RequirePackage{hyperref}
+\hypersetup{draft=false,%
+	bookmarks=true,%
+	pageanchor=true,%
+	bookmarksnumbered=true,	%
+        bookmarksopen=false,%
+	colorlinks=true,%
+	linkcolor=ImperialBlue,%
+	urlcolor=ImperialBrown,%
+	anchorcolor=black,%
+	filecolor=black,%
+	menucolor=black,%
+	citecolor=black}
