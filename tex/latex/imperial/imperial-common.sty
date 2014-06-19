@@ -10,7 +10,7 @@
 \newcommand{\imperiallogo}{imperial-logo}
 
 % Define colors
- \RequirePackage{xcolor}
+\RequirePackage{xcolor}
 \definecolor{ImperialBlue}{rgb}{0.082,0.416,0.608}
 \definecolor{ImperialLightBlue}{rgb}{0.545,0.682,0.8}
 \definecolor{ImperialBrown}{rgb}{0.612,0.278,0.086}
@@ -31,9 +31,10 @@
   \setmainfont[Mapping=tex-text]{Minion Pro}
   \setsansfont[Mapping=tex-text, Scale=0.875]{Arial}
   \setmonofont[Scale=0.9]{Consolas}
+\else
+  \PackageWarning{Custom fonts not supported.  Please use xelatex instead.}
 \fi
 
-% TODO throw a warning if xetex not used
 % TODO change this to a font declaration
 
 % Set up hyperref style
