@@ -16,6 +16,7 @@
 \usepackage{fancyhdr}
 \usepackage{listings}
 
+
 % Basic style configuration
 % -----------------------
 
@@ -32,6 +33,15 @@
 % Custom commands and environments
 % -------------------
 \newcommand{\eventdetails}{}
+
+% A fudge for the stupid beamerarticle commands
+% See StackExchange thread
+\newcommand{\mytitle}{}
+\let\oldtitle\title
+\renewcommand{\title}[1]{%
+        \oldtitle{#1}
+        \renewcommand{\mytitle}{#1}}
+
 
 % Define insert graphics with copyright info
 \newbox\mytempbox
@@ -147,7 +157,7 @@
 \mode<article>{%
 
 % Geometry settings
-\usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
+\usepackage[left=1.5cm,right=6cm,top=2cm,bottom=3cm]{geometry}
 
 % Tweak frame title (no separate line for subtitle)
 \setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
@@ -163,36 +173,35 @@
 \def\@startsection#1#2#3#4#5#6{%
   \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{headings}\selectfont}}
 
-% Configure list style: not quite sure what the effect of this is
-%\def\@listI{\leftmargin\leftmargini
-%  \parsep 0pt
-%  \topsep 5\p@   \@plus3\p@ \@minus5\p@
-%  \itemsep0pt}
-%\let\@listi=\@listI
+% TODO insert nicer title page
 
 \makeatother
 
-
+% TODO Tidy header and footer
 % First page formatting
-   \fancypagestyle{plain}{%
+\fancypagestyle{plain}{%     `
    \fancyhead{}%
    \fancyfoot{}%
    \renewcommand{\headrulewidth}{0pt}%
    \renewcommand{\footrulewidth}{0pt}%
-%   \lhead{\hbox to2.1cm{\hss\includegraphics[width=2cm]{\mylogo}\hss}}%
-   \lhead{\includegraphics[width=\logowidth]{\imperiallogo}}%
+   \addtolength{\headwidth}{\marginparwidth}
+   \addtolength{\headwidth}{\marginparsep}
+   \rhead{\includegraphics[width=1.5in]{\imperiallogo}}%
    %% git revision control footer 
-%   \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}} 
+   \rfoot{TODO version info}
+   % \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}} 
 }   
+
 % Subsequent pages
-   \pagestyle{fancy}%
-   \fancyhead{}%
-   \fancyfoot{}%
-%   \lhead{{\ifthenelse{\equal{\mycoursenum}{-1}}{}{\mycoursenum}\ \mycourse}}%
-   \rhead{{\thepage}}%
-   \renewcommand{\headrulewidth}{0pt}
-   %% git revision control footer 
-%   \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}%
- }
+\pagestyle{fancy}%
+  \fancyhead{}%
+  \fancyfoot{}%
+  \rhead{\mytitle}
+  \lfoot{\eventdetails}
+  \rfoot{{\thepage}}%
+  \renewcommand{\headrulewidth}{0pt}
+ 
+% Close article settings
+}
 
 \mode<all>
