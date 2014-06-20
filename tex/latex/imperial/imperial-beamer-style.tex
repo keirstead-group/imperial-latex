@@ -14,6 +14,7 @@
 % Common packages
 \usepackage{imperial-common}
 \usepackage{fancyhdr}
+\usepackage{listings}
 
 % Basic style configuration
 % -----------------------
@@ -37,6 +38,38 @@
   {\fontsize{5}{6}\selectfont{\color{black!75}{\vbox{\hsize=\mytempdimen#3}}}}%
 \vskip3pt%
 }}
+
+% Listings set up
+% --------------------
+% The default listing stylings and language
+\lstset{language=Java}
+\mode<all>{%
+  \lstset{%
+  basicstyle=\ttfamily,
+  commentstyle=\slshape\color{green!50!black},
+  keywordstyle=\bfseries\color{headings!50!black},
+  backgroundcolor=\color{codebg!10},
+  identifierstyle=\color{headings},
+  stringstyle=\color{orange},
+  escapechar=\#,
+  emphstyle=\color{red}}
+}
+
+% Adjust the font size for slides
+\mode<presentation>{%
+  \lstset{%
+  basicstyle=\footnotesize\ttfamily}
+}
+
+% This doesn't seem to work properly in slides
+\mode<article>{%
+  \lstnewenvironment{rcode}{%
+    \lstset{language=R}}{}
+}
+\mode<presentation>{%
+  \lstnewenvironment{rcode}{%
+    \lstset{language=R}}{}
+}
 
 % Beamer set up
 % ------------------------

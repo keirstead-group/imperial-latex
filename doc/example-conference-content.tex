@@ -52,4 +52,28 @@ This is a block
 \end{frame}
 
 \lipsum[4]
+
+\begin{frame}[fragile]{Code listing}
+
+% Special rcode environment for R
+% Doesn't entirely work
+\begin{rcode}
+# This is an R comment
+x <- 10
+\end{rcode}
+
+\begin{lstlisting}[language=R]
+# This is an R comment
+x <- 10
+\end{lstlisting}
+
+% The default listing is Java
+\begin{lstlisting}
+// A test class
+public class Test {
+  int x = 10;
+}
+\end{lstlisting}
+\end{frame}
+
 \end{document}
