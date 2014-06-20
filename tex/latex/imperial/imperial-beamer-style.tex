@@ -31,7 +31,9 @@
 \logo{\includegraphics[width=1in]{\imperiallogo}}
 
 % Use a nicer font
-\setsansfont[Mapping=tex-text]{Myriad Pro}
+\ifxetex
+        \setsansfont{Myriad Pro}
+\fi
 
 % Set default colours
 \definecolor{codebg}{rgb}{0.3,0.3,0.3}

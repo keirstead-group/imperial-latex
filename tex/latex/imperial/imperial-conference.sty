@@ -20,6 +20,29 @@
 % Turn off extra section for bibliography.  Want to define it manually in source code.
 \renewcommand{\bibsection}{}
 
+% A personalised frame for the end of a presentation
+\ifxetex
+  \RequirePackage{fontawesome}
+\else
+  \newcommand{\faPhone}{tel}
+  \newcommand{\faGlobe}{}
+  \newcommand{\faTwitter}{}
+  \newcommand{\faGithub}{}
+  \newcommand{\faEnvelope}{}
+\fi
+
+\newcommand{\moreinfoframe}[1]{%
+    \begin{center}
+      \includegraphics[width=1.6in]{#1}\\[0.5em]
+      \footnotesize
+      \begin{tabular}{ll}
+        \faGlobe & \url{http://www.imperial.ac.uk/people/j.keirstead}\\
+        \faEnvelope &  j.keirstead@imperial.ac.uk\\
+        \faTwitter & @jameskeirstead\\
+        \faGithub & \url{http://github.com/keirstead-group} 
+      \end{tabular}
+    \end{center}
+}
 
 
 
