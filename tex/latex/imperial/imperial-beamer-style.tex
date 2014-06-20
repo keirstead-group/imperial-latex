@@ -13,6 +13,60 @@
 
 % Common packages
 \usepackage{imperial-common}
+\usepackage{fancyhdr}
+
+% Basic style configuration
+% -----------------------
+
 % Use a nicer font
 \setsansfont[Mapping=tex-text]{Myriad Pro}
+
+% Set default colours
+\definecolor{codebg}{rgb}{0.3,0.3,0.3}
+\definecolor{headings}{named}{ImperialBlue}
+
+
+% Beamer set up
+% ------------------------
+% Set basic beamer theme
+\usecolortheme{rose}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=headings}
+\setbeamercolor{author}{parent=structure}
+
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=, series=\bfseries}
+\setbeamerfont{framesubtitle}{series=\normalfont}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+
+% From lecture style
+\usecolortheme{rose,sidebartab}
+
+% Templates
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vskip1em
+%  {\huge Kapitel \insertshortlecture\par}
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%     
+  \vskip1em\par
+  \mycourse\ \ifthenelse{\equal{\mycoursenum}{-1}}{}{(\mycoursenum)\ lecture}\par
+  \insertdate\par
+  \vskip0pt plus1filll
+  \leftskip=0pt plus1fill\insertauthor\par
+  \insertinstitute\vskip1em
+}
 
