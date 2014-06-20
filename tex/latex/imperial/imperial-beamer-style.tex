@@ -132,10 +132,13 @@
 \defbeamertemplate<article>{frame begin}{margins}{\sffamily}
 \defbeamertemplate<article>{frame end}{margins}{\marginpar{\scriptsize\hbox to 1cm{\sffamily \hfill\strut Slide~\insertframenumber}\hrule height .2pt}}
 
-% Select the style
 \mode<article>{%
-\setbeamertemplate{frame begin}[margins]
-\setbeamertemplate{frame end}[margins]
+  % Select the style
+  \setbeamertemplate{frame begin}[margins]
+  \setbeamertemplate{frame end}[margins]
+  % Bump labels out to margin 
+  \setlength{\marginparwidth}{1cm}
+  \setlength{\marginparsep}{4.5cm}
 }
 
 \newlength{\logowidth}
@@ -146,13 +149,29 @@
 % Geometry settings
 \usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
 
-% Section settings
+% Tweak frame title (no separate line for subtitle)
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+
+
+% Internal commands
 \makeatletter
+
+% Configure section style
 \let\origstartsection=\@startsection
 \def\@startsection#1#2#3#4#5#6{%
   \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{headings}\selectfont}}
 
+% Configure list style: not quite sure what the effect of this is
+%\def\@listI{\leftmargin\leftmargini
+%  \parsep 0pt
+%  \topsep 5\p@   \@plus3\p@ \@minus5\p@
+%  \itemsep0pt}
+%\let\@listi=\@listI
+
 \makeatother
+
 
 % First page formatting
    \fancypagestyle{plain}{%
@@ -164,7 +183,7 @@
    \lhead{\includegraphics[width=\logowidth]{\imperiallogo}}%
    %% git revision control footer 
 %   \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}} 
-}
+}   
 % Subsequent pages
    \pagestyle{fancy}%
    \fancyhead{}%
@@ -176,3 +195,4 @@
 %   \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}%
  }
 
+\mode<all>
