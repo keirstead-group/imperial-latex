@@ -16,10 +16,12 @@
 \maketitle
 \end{frame}
 
+\section{Introduction}
+
 \lipsum[1]
 
 \begin{frame}{Again}
-asds \pause
+Written with Beamer \citep{Tantau_2004} \pause
 asds \url{test}
 
 \begin{block}{Test}
@@ -28,6 +30,9 @@ This is a block
 \end{frame}
 
 \lipsum[2]
+
+\subsection{Lists}
+
 \begin{frame}{Lists}{Subtitle}
 \begin{itemize}
 \item asdas
@@ -73,7 +78,19 @@ x <- 10
 public class Test {
   int x = 10;
 }
+
 \end{lstlisting}
 \end{frame}
+
+
+\section*{References and further reading}
+Test a reference to \citep{Tantau_2004}.
+
+\begin{frame}[allowframebreaks]{References} 
+\scriptsize
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{frame}
+
 
 \end{document}

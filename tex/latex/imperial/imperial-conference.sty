@@ -6,6 +6,14 @@
 % Define the default institution
 \institute{\college}
 
+% Allow referencing
+% Bibliography formatting commands
+\RequirePackage{natbib}
+\bibpunct[: ]{(}{)}{,}{a}{}{,}
+
+% Turn off extra section for bibliography.  Want to define it manually in source code.
+\renewcommand{\bibsection}{}
+
 % Define the name of the event as a "conference"
 \newcommand{\@conference}{}
 \newcommand{\conference}[1]{\renewcommand{\@conference}{#1}}
