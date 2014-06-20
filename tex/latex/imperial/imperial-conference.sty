@@ -4,10 +4,10 @@
 \ProvidesPackage{imperial-conference}[2014/06/20 Imperial College conference style]
 
 % Load require packages
-%\input{imperial-beamer-style.tex}
+\input{imperial-beamer-style.tex}
 
-\newcommand{\myconf}{}
-\newcommand{\conference}[1]{\renewcommand{\myconf}{#1}}
+\newcommand{\@conference}{}
+\newcommand{\conference}[1]{\renewcommand{\@conference}{#1}}
 \setbeamertemplate{title page}{
   \vbox{}
   \vskip1em
@@ -21,7 +21,7 @@
   {\small\insertauthor\par
   \insertinstitute\par
   \vskip10em\par
-   \myconf\par
+   \@conference\par
   \insertdate\par}
 
 }

@@ -7,13 +7,15 @@ LaTeX documents with a consistent look-and-feel for Imperial College.
 
  * `imperial-common.sty` contains common settings for fonts, colors,
    and so on.
-   
+
+ * `imperial-conference.sty` for conference presentations.  This
+   should be loaded with `\usepackage` in both the slides and notes
+   versions of a presentation.  Please see the `doc` folder for
+   examples.
+
  * `imperial-beamer-style.tex` gives configuration settings for Beamer
    presentations (TODO).
    
- * `imperial-conference.sty` for conference presentations.  This
-   should be included separately in an article compilation; see the
-   `doc` folder for examples (TODO).
 
 ## Class files
  
