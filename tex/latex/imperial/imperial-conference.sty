@@ -3,6 +3,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{imperial-conference}[2014/06/20 Imperial College conference style]
 
+% Load the main style file
+\input{imperial-beamer-style.tex}
+
+% Define the name of the event as a "conference"
+\newcommand{\conference}[1]{\renewcommand{\eventdetails}{#1}}
+
 % Define the default institution
 \institute{\college}
 
@@ -14,11 +20,7 @@
 % Turn off extra section for bibliography.  Want to define it manually in source code.
 \renewcommand{\bibsection}{}
 
-% Define the name of the event as a "conference"
-\newcommand{\@conference}{}
-\newcommand{\conference}[1]{\renewcommand{\@conference}{#1}}
 
-% Load require packages
-\input{imperial-beamer-style.tex}
-\renewcommand{\eventdetails}{\@conference}
+
+
 
