@@ -48,7 +48,11 @@
 \renewcommand{\title}[1]{%
         \oldtitle{#1}
         \renewcommand{\mytitle}{#1}}
-
+\newcommand{\myinst}{}
+\let\oldinstitute\institute
+\renewcommand{\institute}[1]{%
+        \oldinstitute{#1}
+        \renewcommand{\myinst}{#1}}
 
 % Define insert graphics with copyright info
 \newbox\mytempbox
@@ -180,7 +184,31 @@
 \def\@startsection#1#2#3#4#5#6{%
   \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{headings}\selectfont}}
 
-% TODO insert nicer title page
+% Format title block
+\def\@maketitle{\makechapter}
+
+\def\makechapter{
+  \newpage
+  \null
+  \vskip 2em%
+  {%
+    \parindent=0pt
+    \raggedright
+    \sffamily
+    \vskip8pt
+    {\fontsize{24pt}{28pt}\selectfont \color{headings} \mytitle\par\vskip4pt}
+   {\Large\selectfont \color{headings} \insertsubtitle\par}
+    \vskip10pt
+    \normalsize\selectfont \eventdetails\par
+    \@date\par          
+    \@author\par 
+    \myinst\par
+    \vskip1.5em 
+  }
+  \par
+  \vskip 1.5em%
+       
+}
 
 \makeatother
 
