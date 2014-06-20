@@ -199,10 +199,16 @@
     {\fontsize{24pt}{28pt}\selectfont \color{headings} \mytitle\par\vskip4pt}
    {\Large\selectfont \color{headings} \insertsubtitle\par}
     \vskip10pt
-    \normalsize\selectfont \eventdetails\par
-    \@date\par          
+    \normalsize\selectfont          
+    \begin{minipage}{0.4\textwidth}
     \@author\par 
     \myinst\par
+    \end{minipage}  \hfill 
+    \begin{minipage}{0.4\textwidth}
+    \raggedleft                   
+    \eventdetails\par
+    \@date\par
+    \end{minipage}
     \vskip1.5em 
   }
   \par
