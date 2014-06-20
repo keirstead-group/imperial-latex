@@ -25,6 +25,18 @@
 \definecolor{codebg}{rgb}{0.3,0.3,0.3}
 \definecolor{headings}{named}{ImperialBlue}
 
+% Custom environments
+% -------------------
+% Define insert graphics with copyright info
+\newbox\mytempbox
+\newdimen\mytempdimen
+\newcommand\includegraphicscopyright[3][]{%
+  \leavevmode\vbox{%
+  \vskip3pt\raggedright\setbox\mytempbox=\hbox{\includegraphics[#1]{#2}}%
+   \mytempdimen=\wd\mytempbox\box\mytempbox\par\vskip1pt%
+  {\fontsize{5}{6}\selectfont{\color{black!75}{\vbox{\hsize=\mytempdimen#3}}}}%
+\vskip3pt%
+}}
 
 % Beamer set up
 % ------------------------
