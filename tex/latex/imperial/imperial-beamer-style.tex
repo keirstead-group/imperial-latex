@@ -70,3 +70,52 @@
   \insertinstitute\vskip1em
 }
 
+% Beamer article settings
+% -------------------------
+
+% Slide numbering tricks.  See the lectures project for other slide framing examples.
+ 
+% Definition for lined
+\defbeamertemplate<article>{frame begin}{lined}{\par\noindent\rule{\textwidth}{1pt}\par}
+\defbeamertemplate<article>{frame end}{lined}{\par\noindent\rule{\textwidth}{1pt}\par}
+ 
+% Definition for margin
+\defbeamertemplate<article>{frame begin}{margins}{\sffamily}
+\defbeamertemplate<article>{frame end}{margins}{\marginpar{\scriptsize\hbox to 1cm{\sffamily \hfill\strut Slide~\insertframenumber}\hrule height .2pt}}
+
+% Select the style
+\mode<article>{%
+\setbeamertemplate{frame begin}[margins]
+\setbeamertemplate{frame end}[margins]
+}
+
+\newlength{\logowidth}
+\setlength{\logowidth}{2cm}
+
+\mode<article>{%
+
+% Geometry settings
+\usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
+
+% First page formatting
+   \fancypagestyle{plain}{%
+   \fancyhead{}%
+   \fancyfoot{}%
+   \renewcommand{\headrulewidth}{0pt}%
+   \renewcommand{\footrulewidth}{0pt}%
+%   \lhead{\hbox to2.1cm{\hss\includegraphics[width=2cm]{\mylogo}\hss}}%
+   \lhead{\includegraphics[width=\logowidth]{\imperiallogo}}%
+   %% git revision control footer 
+%   \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}} 
+}
+% Subsequent pages
+   \pagestyle{fancy}%
+   \fancyhead{}%
+   \fancyfoot{}%
+%   \lhead{{\ifthenelse{\equal{\mycoursenum}{-1}}{}{\mycoursenum}\ \mycourse}}%
+   \rhead{{\thepage}}%
+   \renewcommand{\headrulewidth}{0pt}
+   %% git revision control footer 
+%   \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}%
+ }
+
