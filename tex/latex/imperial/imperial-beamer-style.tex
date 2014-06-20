@@ -16,6 +16,13 @@
 \usepackage{fancyhdr}
 \usepackage{listings}
 
+% Version control settings
+% Comment this out if not using version control
+\newcommand{\vcfile}{vc}
+%% See vc manual to compile with xelatex -enable-write18 vita
+\ifx\ifeof18
+\immediate\write18{vc.bat}
+\fi
 
 % Basic style configuration
 % -----------------------
@@ -177,7 +184,6 @@
 
 \makeatother
 
-% TODO Tidy header and footer
 % First page formatting
 \fancypagestyle{plain}{%     `
    \fancyhead{}%
@@ -188,8 +194,12 @@
    \addtolength{\headwidth}{\marginparsep}
    \rhead{\includegraphics[width=1.5in]{\imperiallogo}}%
    %% git revision control footer 
-   \rfoot{TODO version info}
-   % \rfoot{\textcolor{black!30}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}} 
+    \IfFileExists{\vcfile}{%
+      \input{\vcfile}
+      \lfoot{\textcolor{black!50}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}%
+    }{%
+      \lfoot{\textcolor{black!50}{\scriptsize Not under version control}}%
+    }
 }   
 
 % Subsequent pages
