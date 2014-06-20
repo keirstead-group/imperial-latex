@@ -1,27 +1,26 @@
-
+% A style for conference presentations
+% Can be used with either beamer or article
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{imperial-conference}[2013/01/09 Imperial College conference style]
+\ProvidesPackage{imperial-conference}[2014/06/20 Imperial College conference style]
 
-% Load require packages
+% Load the main style file
 \input{imperial-beamer-style.tex}
 
-\newcommand{\myconf}{}
-\newcommand{\conference}[1]{\renewcommand{\myconf}{#1}}
-\setbeamertemplate{title page}{
-  \vbox{}
-  \vskip1em
-  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
-  \ifx\insertsubtitle\@empty%
-  \else%
-    \vskip0.25em%
-    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-  \fi%     
-  \vskip1em\par
-  {\small\insertauthor\par
-  \insertinstitute\par
-  \vskip10em\par
-   \myconf\par
-  \insertdate\par}
+% Define the name of the event as a "conference"
+\newcommand{\conference}[1]{\renewcommand{\eventdetails}{#1}}
 
-}
+% Define the default institution
+\institute{\college}
+
+% Allow referencing
+% Bibliography formatting commands
+\RequirePackage{natbib}
+\bibpunct[: ]{(}{)}{,}{a}{}{,}
+
+% Turn off extra section for bibliography.  Want to define it manually in source code.
+\renewcommand{\bibsection}{}
+
+
+
+
 

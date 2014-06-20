@@ -2,3 +2,10 @@
 *.log
 *.pdf
 *.out
+*.nav
+*.snm
+*.toc
+*.vrb
+*.bbl
+*.blg
+vc.tex
