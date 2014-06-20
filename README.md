@@ -2,6 +2,8 @@
 
 This package contains a series of style and class files for creating
 LaTeX documents with a consistent look-and-feel for Imperial College.
+The sections below list the high-level files that users can call
+directly in their LaTeX documents.  
 
 ## Style files
 
@@ -13,10 +15,6 @@ LaTeX documents with a consistent look-and-feel for Imperial College.
    versions of a presentation.  Please see the `doc` folder for
    examples.
 
- * `imperial-beamer-style.tex` gives configuration settings for Beamer
-   presentations (TODO).
-   
-
 ## Class files
  
  * `impletter.cls` based on a 2003 template for Imperial College
@@ -27,4 +25,10 @@ LaTeX documents with a consistent look-and-feel for Imperial College.
  
 ## Other files
 
-The package also contains logos and some examples in the `doc` folder.
+The package includes other files that you probably won't need to call
+directly.  This includes the examples in the `doc` folder and the
+following notable files.
+
+ * `imperial-beamer-style.tex` gives configuration settings for Beamer
+   presentations.
+   
