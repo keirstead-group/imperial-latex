@@ -3,26 +3,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{imperial-conference}[2014/06/20 Imperial College conference style]
 
-% Load require packages
-\input{imperial-beamer-style.tex}
+% Define the default institution
+\institute{\college}
 
+% Define the name of the event as a "conference"
 \newcommand{\@conference}{}
 \newcommand{\conference}[1]{\renewcommand{\@conference}{#1}}
-\setbeamertemplate{title page}{
-  \vbox{}
-  \vskip1em
-  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
-  \ifx\insertsubtitle\@empty%
-  \else%
-    \vskip0.25em%
-    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-  \fi%     
-  \vskip1em\par
-  {\small\insertauthor\par
-  \insertinstitute\par
-  \vskip10em\par
-   \@conference\par
-  \insertdate\par}
 
-}
+% Load require packages
+\input{imperial-beamer-style.tex}
+\renewcommand{\eventdetails}{\@conference}
 

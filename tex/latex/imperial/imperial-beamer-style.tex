@@ -26,8 +26,10 @@
 \definecolor{codebg}{rgb}{0.3,0.3,0.3}
 \definecolor{headings}{named}{ImperialBlue}
 
-% Custom environments
+% Custom commands and environments
 % -------------------
+\newcommand{\eventdetails}{}
+
 % Define insert graphics with copyright info
 \newbox\mytempbox
 \newdimen\mytempdimen
@@ -100,7 +102,6 @@
 {
   \vbox{}
   \vskip1em
-%  {\huge Kapitel \insertshortlecture\par}
   {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
   \ifx\insertsubtitle\@empty%
   \else%
@@ -108,11 +109,11 @@
     {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
   \fi%     
   \vskip1em\par
-  \mycourse\ \ifthenelse{\equal{\mycoursenum}{-1}}{}{(\mycoursenum)\ lecture}\par
-  \insertdate\par
-  \vskip0pt plus1filll
-  \leftskip=0pt plus1fill\insertauthor\par
-  \insertinstitute\vskip1em
+  {\small\insertauthor\par
+  \insertinstitute\par
+  \vskip10em\par
+  \eventdetails\par
+  \insertdate\par}
 }
 
 % Beamer article settings
