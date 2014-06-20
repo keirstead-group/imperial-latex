@@ -146,6 +146,14 @@
 % Geometry settings
 \usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
 
+% Section settings
+\makeatletter
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{headings}\selectfont}}
+
+\makeatother
+
 % First page formatting
    \fancypagestyle{plain}{%
    \fancyhead{}%
