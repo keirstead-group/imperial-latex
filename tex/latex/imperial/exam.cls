@@ -27,11 +27,7 @@
 \definecolor{solutiontext}{rgb}{0.8,0,0}
 
 % Use pretty fonts if they're available
-\RequirePackage{ifxetex}
-\ifxetex
-  \RequirePackage{fontspec}
-  \setmainfont[Mapping=tex-text]{Book Antiqua} % Minion Pro
-\fi
+\RequirePackage{imperial-common}
 
 % Set up the geometry
 \RequirePackage{geometry}

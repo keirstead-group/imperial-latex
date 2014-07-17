@@ -1,6 +1,11 @@
 Things to TODO for next release:
 
-- [ ] Install Minion Pro and crash nicely if not available
+- [X] Install Minion Pro
 - [ ] Ensure all style files inherit from the top
 - [ ] Any little formatting tweaks
+- [ ] Article class?!
 - [ ] Improve the README to capture version control usage
+- [ ] Add a separate "project" report class
+
+Wishlist
+- [ ] Nice substitutes if font not available.  See http://tex.stackexchange.com/questions/53443/how-to-check-if-a-font-exists-in-xelatex

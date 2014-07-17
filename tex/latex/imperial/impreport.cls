@@ -34,8 +34,7 @@
 % Load last because it has the hyperref loading in it
 \RequirePackage{imperial-common}
 % This will set the basic fonts but I want to tweak them
-\setmainfont[Mapping=tex-text]{Book Antiqua}
-\setsansfont[Mapping=tex-text]{Seravek ExtraLight}
+\setsansfont{Seravek ExtraLight}
 
 % Declare the title font
 \newcommand{\imptitlefont}{\color{ImperialBlue}\sffamily}
