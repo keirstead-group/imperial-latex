@@ -21,7 +21,7 @@ directly in their LaTeX documents.
    letters, updated with a simpler user interface and consistency with
    `imperial-common.sty`.
    
- * `exam.cls` for creating exam scripts with and without solutions (TODO)
+ * `exam.cls` for creating exam scripts with and without solutions
  
 ## Other files
 

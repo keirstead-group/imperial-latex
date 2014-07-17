@@ -30,7 +30,7 @@
 \RequirePackage{ifxetex}
 \ifxetex
   \RequirePackage{fontspec}
-  \setmainfont[Mapping=tex-text]{Minion Pro}
+  \setmainfont[Mapping=tex-text]{Book Antiqua} % Minion Pro
 \fi
 
 % Set up the geometry
