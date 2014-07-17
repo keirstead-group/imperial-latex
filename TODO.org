@@ -1,0 +1,6 @@
+Things to TODO for next release:
+
+- [ ] Install Minion Pro and crash nicely if not available
+- [ ] Ensure all style files inherit from the top
+- [ ] Any little formatting tweaks
+- [ ] Improve the README to capture version control usage
