@@ -16,62 +16,59 @@
 \ProcessOptions*
 
 % Required packages
-\RequirePackage{booktabs}
-\RequirePackage{graphicx}
-\RequirePackage{amsmath}
+% This provides xcolor, graphicx
+\RequirePackage{imperial-common}
+
+% Other options for exams
 \RequirePackage{environ}
-\RequirePackage{xcolor}
 \RequirePackage{enumerate}
 
 % Set the solution color
-\definecolor{solutiontext}{rgb}{0.8,0,0}
-
-% Use pretty fonts if they're available
-\RequirePackage{imperial-common}
+\definecolor{solutiontext}{named}{ImperialBrown}
 
 % Set up the geometry
 \RequirePackage{geometry}
 \geometry{margin=1in}
 
 % Declare variables
-\newcommand{\themodulename}{}
-\newcommand{\modulename}[1]{\renewcommand{\themodulename}{#1}}
-\newcommand{\themodulenumber}{}
-\newcommand{\modulenumber}[1]{\renewcommand{\themodulenumber}{#1}}
-\newcommand{\theexamyear}{}
-\newcommand{\examyear}[1]{\renewcommand{\theexamyear}{#1}}
-\newcommand{\theexamdate}{}
-\newcommand{\examdate}[1]{\renewcommand{\theexamdate}{#1}}
-\newcommand{\therubric}{}
-\newcommand{\rubric}[1]{\renewcommand{\therubric}{#1}}
-\newcommand{\thedegree}{MEng}
-\newcommand{\degree}[1]{\renewcommand{\thedegree}{#1}}
-\newcommand{\theextratext}{\emph{This paper is also taken for the relevant examination for the Associateship.}}
-\newcommand{\extratext}[1]{\renewcommand{\theextratext}{#1}}
-\newcommand{\theyearpart}{PART I}
-\newcommand{\yearpart}[1]{\renewcommand{\theyearpart}{#1}}
+\newcommand{\@modulename}{}
+\newcommand{\modulename}[1]{\renewcommand{\@modulename}{#1}}
+\newcommand{\@modulenumber}{}
+\newcommand{\modulenumber}[1]{\renewcommand{\@modulenumber}{#1}}
+\newcommand{\@examyear}{}
+\newcommand{\examyear}[1]{\renewcommand{\@examyear}{#1}}
+\newcommand{\@examdate}{}
+\newcommand{\examdate}[1]{\renewcommand{\@examdate}{#1}}
+\newcommand{\@rubric}{}
+\newcommand{\rubric}[1]{\renewcommand{\@rubric}{#1}}
+\newcommand{\@degree}{MEng}
+\newcommand{\degree}[1]{\renewcommand{\@degree}{#1}}
+\newcommand{\@extratext}{\emph{This paper is also taken for the relevant examination for the Associateship.}}
+\newcommand{\extratext}[1]{\renewcommand{\@extratext}{#1}}
+\newcommand{\@yearpart}{PART I}
+\newcommand{\yearpart}[1]{\renewcommand{\@yearpart}{#1}}
 
 % I don't want paragraph indents in this document
 \setlength{\parindent}{0pt}
 
 % Make the title page
-\newcommand{\makecover}{%
+\renewcommand{\maketitle}{%
   \thispagestyle{empty}
   {\Large Imperial College London\\[2em]%
-  \thedegree\ Examination} \theexamyear\\[1em]%
-  {\large \theyearpart}\\[1em]%
-  \theextratext\\[4em]
-  \textbf{\Large\themodulenumber: \themodulename}\\[2em]%
-  \theexamdate\\[2em]%
+  \@degree\ Examination} \@examyear\\[1em]%
+  {\large \@yearpart}\\[1em]%
+  \@extratext\\[4em]
+  \textbf{\Large\@modulenumber: \@modulename}\\[2em]%
+  \@examdate\\[2em]%
   \ifthenelse{\boolean{showsolutions}}{\textcolor{solutiontext}{\large With solutions}\\Set by \@author}{\mbox{}}\\[4em]
-  \therubric\\%
+  \@rubric\\%
   \vfill
   \begin{center}
     \bfseries DO NOT OPEN THIS EXAMINATION PAPER UNTIL\\
     INSTRUCTED TO DO SO BY THE INVIGILATOR
   \end{center}
   \vfill
-  \copyright~\theexamyear\ Imperial College London%
+  \copyright~\@examyear\ Imperial College London%
   \newpage
   \setcounter{page}{1}
 }
@@ -80,7 +77,7 @@
 \newcounter{question}
 \newcommand{\points}[1]{\\\mbox{}\hfill \emph{(#1 marks)}}
 \newenvironment{questions}[1][]{\begin{list}%
-    {#1 \arabic{question}.}%
+    {\bfseries #1 \arabic{question}.}%
     {\usecounter{question}
 	\setlength{\itemsep}{1em}}}
                {\end{list}}
