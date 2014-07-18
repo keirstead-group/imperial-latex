@@ -2,10 +2,10 @@ Things to TODO for next release:
 
 - [X] Install Minion Pro
 - [X] Install fontawesome for the letter class
-- [ ] Ensure all style files inherit from the top
-- [ ] Any little formatting tweaks
-- [ ] Article class?!  Read about memoir with chapter and article option.
-- [ ] Improve the README to capture version control usage
+- [X] Add an article class
+- [X] Ensure all style files inherit from the top
+- [X] Any little formatting tweaks
+- [X] Improve the README to capture version control usage
 - [ ] vc option for imperial-conference (or beamer style)
 - [ ] Add a separate "project" report class
 

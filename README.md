@@ -33,10 +33,13 @@ directly in their LaTeX documents.
    is redefined to be `\section`.
  
 Note that `impreport`, `imparticle`, and `imperial-conference` all
-have supported for displaying version control information.  To use
-this feature, you must manually run the version control script,
+have support for displaying version control information.  To use this
+feature, you must manually run the version control script,
 e.g. `vc.sh` to populate the `vc.tex` file with appropriate values.
 The `vc` option then needs to be turned on to display the information.
+It assumes that the `vc.tex` is in the same directory as the main
+document; however this can be changed by redefining the `\vcfile`
+command.
  
 ## Other files
 
