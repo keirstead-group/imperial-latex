@@ -8,7 +8,6 @@
 
 % Needed for later processing
 \RequirePackage{ifthen}
-\RequirePackage{ifxetex}
 \newboolean{useVC}
 \setboolean{useVC}{false}
 
@@ -35,6 +34,9 @@
 \RequirePackage{imperial-common}
 % This will set the basic fonts but I want to tweak them
 \setsansfont{Seravek ExtraLight}
+
+% For nice tables
+\RequirePackage{booktabs}
 
 % Declare the title font
 \newcommand{\imptitlefont}{\color{ImperialBlue}\sffamily}
@@ -112,19 +114,3 @@
 %  \emptyclearpage
 %  \ifthenelse{\isodd{\pageref{LastPage}}}{\null\emptyclearpage}{}}
 %}
-
-
-% Finally the hyperref settings
-\RequirePackage{hyperref}
-\hypersetup{draft=false,%
-	bookmarks=true,%
-	pageanchor=true,%
-	bookmarksnumbered=true,	%
-        bookmarksopen=false,%
-	colorlinks=true,%
-	linkcolor=black,%
-	urlcolor=USBENGreen,%
-	anchorcolor=black,%
-	filecolor=black,%
-	menucolor=black,%
-	citecolor=black}
