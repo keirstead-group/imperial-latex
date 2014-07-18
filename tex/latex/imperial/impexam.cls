@@ -3,7 +3,7 @@
 % 15 February 2012
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{exam}[2012/02/15 Exam template for Imperial college]
+\ProvidesPackage{impexam}[2012/02/15 Exam template for Imperial college]
 
 % Finally base the whole thing on the article class
 \LoadClassWithOptions{article}
