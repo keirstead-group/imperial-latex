@@ -21,7 +21,22 @@ directly in their LaTeX documents.
    letters, updated with a simpler user interface and consistency with
    `imperial-common.sty`.
    
- * `exam.cls` for creating exam scripts with and without solutions
+ * `impexam.cls` for creating exam scripts with and without solutions.
+ 
+ * `impreport.cls` for reports with an Imperial College logo on the
+   front page and matching colour scheme and typography.  This uses
+   the memoir package.
+ 
+ * `imparticle.cls` for articles, including knitr documents.  This
+   class is also based on the memoir package using the `article` and
+   `oneside` options.  To avoid any confusion, the `\chapter` command
+   is redefined to be `\section`.
+ 
+Note that `impreport`, `imparticle`, and `imperial-conference` all
+have supported for displaying version control information.  To use
+this feature, you must manually run the version control script,
+e.g. `vc.sh` to populate the `vc.tex` file with appropriate values.
+The `vc` option then needs to be turned on to display the information.
  
 ## Other files
 
