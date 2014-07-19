@@ -12,6 +12,7 @@
 \setboolean{useVC}{false}
 
 % Add an option to use version control
+\newcommand{\vcfile}{vc.tex}
 \DeclareOption{vc}{%
   \setboolean{useVC}{true}
   %% See vc manual to compile with xelatex --enable-write18
@@ -50,7 +51,6 @@
 \newcommand{\reporturl}[1]{\renewcommand{\@reporturl}{#1}}
 \newcommand{\@funding}{}
 \newcommand{\funding}[1]{\renewcommand{\@funding}{#1}}
-\newcommand{\vcfile}{vc.tex}
 \newcommand{\@twitter}{}
 \newcommand{\twitter}[1]{\renewcommand{\@twitter}{#1}}
 \RequirePackage{etoolbox}
