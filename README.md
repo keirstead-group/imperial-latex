@@ -25,21 +25,23 @@ directly in their LaTeX documents.
  
  * `impreport.cls` for reports with an Imperial College logo on the
    front page and matching colour scheme and typography.  This uses
-   the memoir package.
+   the memoir package.  The class is actually based on
+   `projectreport.cls` which is basically the same but makes it easy
+   to change the project logo and title font style.
  
  * `imparticle.cls` for articles, including knitr documents.  This
    class is also based on the memoir package using the `article` and
    `oneside` options.  To avoid any confusion, the `\chapter` command
    is redefined to be `\section`.
  
-Note that `impreport`, `imparticle`, and `imperial-conference` all
-have support for displaying version control information.  To use this
-feature, you must manually run the version control script,
-e.g. `vc.sh` to populate the `vc.tex` file with appropriate values.
-The `vc` option then needs to be turned on to display the information.
-It assumes that the `vc.tex` is in the same directory as the main
-document; however this can be changed by redefining the `\vcfile`
-command.
+Note that `impreport`, `projectreport`, `imparticle`, and
+`imperial-conference` all have support for displaying version control
+information.  To use this feature, you must manually run the version
+control script, e.g. `vc.sh` to populate the `vc.tex` file with
+appropriate values.  The `vc` option then needs to be turned on to
+display the information.  It assumes that the `vc.tex` is in the same
+directory as the main document; however this can be changed by
+redefining the `\vcfile` command.
  
 ## Other files
 
