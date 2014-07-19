@@ -4,6 +4,10 @@
 \ProvidesPackage{imperial-conference}[2014/06/20 Imperial College conference style]
 
 % Load the main style file
+\DeclareOption{vc}{
+  \PassOptionsToPackage{vc}{imperial-beamer-style}}
+\ProcessOptions\relax
+
 \RequirePackage{imperial-beamer-style}
 
 % Define the name of the event as a "conference"

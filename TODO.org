@@ -7,7 +7,7 @@ Things to TODO for next release:
 - [X] Ensure all style files inherit from the top
 - [X] Any little formatting tweaks
 - [X] Improve the README to capture version control usage
-- [ ] vc option for imperial-conference (or beamer style)
+- [X] vc option for imperial-conference (or beamer style)
 - [X] Add a separate "project" report class
 
 Wishlist

@@ -20,12 +20,22 @@
 \RequirePackage{listings}
 
 % Version control settings
-% Comment this out if not using version control
-\newcommand{\vcfile}{vc}
-%% See vc manual to compile with xelatex -enable-write18 vita
-\ifx\ifeof18
-\immediate\write18{vc.bat}
-\fi
+% Needed for later processing
+\RequirePackage{ifthen}
+\newboolean{useVC}
+\setboolean{useVC}{false}
+
+% Add an option to use version control
+\newcommand{\vcfile}{vc.tex}
+\DeclareOption{vc}{%
+  \setboolean{useVC}{true}
+  %% See vc manual to compile with xelatex --enable-write18
+  \ifx\ifeof18
+  \immediate\write18{vc.sh}
+  \fi
+}%
+
+\ProcessOptions\relax
 
 % Basic style configuration
 % -----------------------
@@ -234,7 +244,7 @@
    \addtolength{\headwidth}{\marginparsep}
    \rhead{\includegraphics[width=1.5in]{\imperiallogo}}%
    %% git revision control footer 
-    \IfFileExists{\vcfile}{%
+   \ifthenelse{\boolean{useVC}}{%
       \input{\vcfile}
       \lfoot{\textcolor{black!50}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}%
     }{%
