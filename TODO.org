@@ -12,3 +12,8 @@ Things to TODO for next release:
 
 Wishlist
 - [ ] Nice substitutes if font not available.  See http://tex.stackexchange.com/questions/53443/how-to-check-if-a-font-exists-in-xelatex
+- [ ] Consolidate all of the version control stuff into
+  imperial-common.  It works now but it's scattered across three
+  sub-files, which makes it harder to maintain.  There should be a
+  master \getversion command that gets the formatted version data if
+  used.
