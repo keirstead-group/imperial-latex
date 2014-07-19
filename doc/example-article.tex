@@ -1,0 +1,44 @@
+\documentclass[a4paper]{imparticle}
+
+\usepackage{lipsum}
+
+\title{This is the title}
+\author{James Keirstead}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+\lipsum[1]
+
+\subsection{Sub section}
+\lipsum[2]
+
+\begin{figure}[htbp]
+  \includegraphics[width=3in]{Isambard_Kingdom_Brunel_signature.png}
+  \caption{A figure with a very long caption that should be set with a hanging indent but aligned to the left.}
+\end{figure}
+
+This is a footnote.\footnote{which includes a link \href{http://www.bbc.co.uk}{BBC}}
+
+And here's a table with a caption
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lr}
+    \toprule
+    A & B \\
+    \midrule
+    0 & 0 \\
+    1 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Table caption}
+\end{table}
+
+\chapter{Test}
+asdas
+
+\subsubsection*{subsub section}
+\lipsum[3]
+\end{document}

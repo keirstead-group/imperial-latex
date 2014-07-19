@@ -1,0 +1,110 @@
+% Define the content of your presentation in this file
+
+% Use example-conference-notes or example-conference-slides to compile
+% it to the right output format.
+\title{This is the title}
+\subtitle{Sub title}
+\conference{International Conference}
+\date{\today}
+\author{James Keirstead}
+
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\section{Introduction}
+
+\lipsum[1]
+
+\begin{itemize}
+\item A list 
+\end{itemize}
+
+\begin{frame}{Again}
+Written with Beamer \citep{Tantau_2004} \pause
+asds \url{test}
+
+\begin{block}{Test}
+This is a block
+\end{block}
+
+Some math
+\begin{align*}
+a^2 + b^2 = c^2
+\end{align*}
+\end{frame}
+
+\lipsum[2]
+
+\subsection{Lists}
+
+\begin{frame}{Lists}{Subtitle}
+\begin{itemize}
+\item asdas
+\end{itemize}
+
+\begin{description}
+\item [test] test
+\end{description}
+
+\begin{enumerate}
+\item asds
+\end{enumerate}
+\end{frame}
+
+
+\lipsum[3]
+
+\begin{frame}{Images}
+
+\includegraphicscopyright[width=2in]{Isambard_Kingdom_Brunel_signature.png}{Source: \href{http://commons.wikimedia.org/wiki/File:Isambard_Kingdom_Brunel_signature.png}{Wikimedia}}
+
+\end{frame}
+
+\lipsum[4]
+
+\begin{frame}[fragile]{Code listing}
+
+% Special rcode environment for R
+% Doesn't entirely work
+\begin{rcode}
+# This is an R comment
+x <- 10
+\end{rcode}
+
+\begin{lstlisting}[language=R]
+# This is an R comment
+x <- 10
+\end{lstlisting}
+
+% The default listing is Java
+\begin{lstlisting}
+// A test class
+public class Test {
+  int x = 10;
+}
+
+\end{lstlisting}
+\end{frame}
+
+\section*{References and further reading}
+Test a reference to \citep{Tantau_2004}.
+
+\begin{frame}[allowframebreaks]{References} 
+\scriptsize
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{frame}
+
+\begin{frame}{More information}
+\moreinfoframe{Isambard_Kingdom_Brunel_signature.png}
+\end{frame}
+
+
+
+\end{document}

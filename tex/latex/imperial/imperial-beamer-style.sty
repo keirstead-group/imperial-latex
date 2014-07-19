@@ -1,0 +1,267 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+% Modified by James Keirstead for Imperial College style files
+% Load necessary packages 
+% -----------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{imperial-beamer-style}[2014/06/20 Imperial College conference style]
+
+% Common packages
+\RequirePackage{imperial-common}
+\RequirePackage{fancyhdr}
+\RequirePackage{listings}
+
+% Version control settings
+% Needed for later processing
+\RequirePackage{ifthen}
+\newboolean{useVC}
+\setboolean{useVC}{false}
+
+% Add an option to use version control
+\newcommand{\vcfile}{vc.tex}
+\DeclareOption{vc}{%
+  \setboolean{useVC}{true}
+  %% See vc manual to compile with xelatex --enable-write18
+  \ifx\ifeof18
+  \immediate\write18{vc.sh}
+  \fi
+}%
+
+\ProcessOptions\relax
+
+% Basic style configuration
+% -----------------------
+
+% Set the logo
+\logo{\includegraphics[width=1in]{\imperiallogo}}
+
+% Use a nicer font
+\ifxetex
+        \setsansfont{Myriad Pro}
+\fi
+
+% Set default colours
+\definecolor{codebg}{rgb}{0.3,0.3,0.3}
+\definecolor{headings}{named}{ImperialBlue}
+\setbeamercolor{alerted text}{fg=ImperialBrown}
+
+% Custom commands and environments
+% -------------------
+\newcommand{\eventdetails}{}
+
+% A fudge for the stupid beamerarticle commands
+% See StackExchange thread
+\newcommand{\mytitle}{}
+\let\oldtitle\title
+\renewcommand{\title}[1]{%
+        \oldtitle{#1}
+        \renewcommand{\mytitle}{#1}}
+\newcommand{\myinst}{}
+\let\oldinstitute\institute
+\renewcommand{\institute}[1]{%
+        \oldinstitute{#1}
+        \renewcommand{\myinst}{#1}}
+
+% Define insert graphics with copyright info
+\newbox\mytempbox
+\newdimen\mytempdimen
+\newcommand\includegraphicscopyright[3][]{%
+  \leavevmode\vbox{%
+  \vskip3pt\raggedright\setbox\mytempbox=\hbox{\includegraphics[#1]{#2}}%
+   \mytempdimen=\wd\mytempbox\box\mytempbox\par\vskip1pt%
+  {\fontsize{5}{6}\selectfont{\color{black!75}{\vbox{\hsize=\mytempdimen#3}}}}%
+\vskip3pt%
+}}
+
+% Listings set up
+% --------------------
+% The default listing stylings and language
+\lstset{language=Java}
+\mode<all>{%
+  \lstset{%
+  basicstyle=\ttfamily,
+  commentstyle=\slshape\color{green!50!black},
+  keywordstyle=\bfseries\color{headings!50!black},
+  backgroundcolor=\color{codebg!10},
+  identifierstyle=\color{headings},
+  stringstyle=\color{orange},
+  escapechar=\#,
+  emphstyle=\color{red}}
+}
+
+% Adjust the font size for slides
+\mode<presentation>{%
+  \lstset{%
+  basicstyle=\footnotesize\ttfamily}
+}
+
+% This doesn't seem to work properly in slides
+\mode<article>{%
+  \lstnewenvironment{rcode}{%
+    \lstset{language=R}}{}
+}
+\mode<presentation>{%
+  \lstnewenvironment{rcode}{%
+    \lstset{language=R}}{}
+}
+
+% Beamer set up
+% ------------------------
+% Set basic beamer theme
+\usecolortheme{rose}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=headings}
+\setbeamercolor{author}{parent=structure}
+
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=, series=\bfseries}
+\setbeamerfont{framesubtitle}{series=\normalfont}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+
+% From lecture style
+\usecolortheme{rose,sidebartab}
+
+% Templates
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vskip1em
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%     
+  \vskip1em\par
+  {\small\insertauthor\par
+  \insertinstitute\par
+  \vskip10em\par
+  \eventdetails\par
+  \insertdate\par}
+}
+
+% Beamer article settings
+% -------------------------
+
+% Slide numbering tricks.  See the lectures project for other slide framing examples.
+ 
+% Definition for lined
+\defbeamertemplate<article>{frame begin}{lined}{\par\noindent\rule{\textwidth}{1pt}\par}
+\defbeamertemplate<article>{frame end}{lined}{\par\noindent\rule{\textwidth}{1pt}\par}
+ 
+% Definition for margin
+\defbeamertemplate<article>{frame begin}{margins}{\sffamily}
+\defbeamertemplate<article>{frame end}{margins}{\marginpar{\scriptsize\hbox to 1cm{\sffamily \hfill\strut Slide~\insertframenumber}\hrule height .2pt}}
+
+\mode<article>{%
+  % Select the style
+  \setbeamertemplate{frame begin}[margins]
+  \setbeamertemplate{frame end}[margins]
+  % Bump labels out to margin 
+  \setlength{\marginparwidth}{1cm}
+  \setlength{\marginparsep}{4.5cm}
+}
+
+\newlength{\logowidth}
+\setlength{\logowidth}{2cm}
+
+\mode<article>{%
+
+% Geometry settings
+\usepackage[left=1.5cm,right=6cm,top=2cm,bottom=3cm]{geometry}
+
+% Tweak frame title (no separate line for subtitle)
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+
+
+% Internal commands
+\makeatletter
+
+% Configure section style
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{headings}\selectfont}}
+
+% Format title block
+\def\@maketitle{\makechapter}
+
+\def\makechapter{
+  \newpage
+  \null
+  \vskip 2em%
+  {%
+    \parindent=0pt
+    \raggedright
+    \sffamily
+    \vskip8pt
+    {\fontsize{24pt}{28pt}\selectfont \color{headings} \mytitle\par\vskip4pt}
+   {\Large\selectfont \color{headings} \insertsubtitle\par}
+    \vskip10pt
+    \normalsize\selectfont          
+    \begin{minipage}{0.48\textwidth}
+    \@author\par 
+    \myinst\par
+    \end{minipage}  \hfill 
+    \begin{minipage}{0.48\textwidth}
+    \raggedleft                   
+    \eventdetails\par
+    \@date\par
+    \end{minipage}
+    \vskip1.5em 
+  }
+  \par
+  \vskip 1.5em%
+       
+}
+
+\makeatother
+
+% First page formatting
+\fancypagestyle{plain}{%     `
+   \fancyhead{}%
+   \fancyfoot{}%
+   \renewcommand{\headrulewidth}{0pt}%
+   \renewcommand{\footrulewidth}{0pt}%
+   \addtolength{\headwidth}{\marginparwidth}
+   \addtolength{\headwidth}{\marginparsep}
+   \rhead{\includegraphics[width=1.5in]{\imperiallogo}}%
+   %% git revision control footer 
+   \ifthenelse{\boolean{useVC}}{%
+      \input{\vcfile}
+      \lfoot{\textcolor{black!50}{\texttt{\scriptsize \VCRevision\ on \VCDateISO}}}%
+    }{%
+      \lfoot{\textcolor{black!50}{\scriptsize Not under version control}}%
+    }
+}   
+
+% Subsequent pages
+\pagestyle{fancy}%
+  \fancyhead{}%
+  \fancyfoot{}%
+  \rhead{\mytitle}
+  \lfoot{\eventdetails}
+  \rfoot{{\thepage}}%
+  \renewcommand{\headrulewidth}{0pt}
+ 
+% Close article settings
+}
+
+\mode<all>

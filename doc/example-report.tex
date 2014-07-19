@@ -1,0 +1,52 @@
+\documentclass[a4paper, vc]{impreport}
+
+\title{Final report for AREVA}
+\subtitle{Is 80\% reduction by 2050 technically feasible?}
+\author{James Keirstead}
+\reporturl{www.test.com}
+\funding{Supported by no one.}
+\twitter{@jameskeirstead}
+%\renewcommand{\vcfile}{../../../doc/vc}
+
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{titlingpage}
+  \maketitle
+\end{titlingpage}
+
+\chapter{Introduction}
+
+\lipsum[1]
+
+\section{Another bit}
+\lipsum[2]
+
+\begin{align*}
+E &= mc^2
+\end{align*}
+
+\begin{figure}[htbp]
+  \includegraphics[width=3in]{Isambard_Kingdom_Brunel_signature.png}
+  \caption{A figure with a very long caption that should be set with a hanging indent but aligned to the left.}
+\end{figure}
+
+This is a footnote.\footnote{which includes a link \href{http://www.bbc.co.uk}{BBC}}
+
+And here's a table with a caption
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lr}
+    \toprule
+    A & B \\
+    \midrule
+    0 & 0 \\
+    1 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Table caption}
+\end{table}
+\end{document}
+

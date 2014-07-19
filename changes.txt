@@ -1,0 +1,11 @@
+latex-imperial 0.1.0 (19 July 2014)
+===================================
+
+ * Initial release of LaTeX style files for Imperial College.
+
+ * Contains files for letters, articles, reports (both Imperial
+   branded ones and an easily modified general style for other project
+   reports), and conference presentations (both notes and slide views
+   from Beamer).
+
+ * Features consistent fonts, colours, and version control features.
