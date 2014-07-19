@@ -10,16 +10,15 @@
 
 \RequirePackage{fancyhdr}
 \RequirePackage{ifthen}
-\RequirePackage{ifxetex}
+
+% Load last because it has the hyperref loading in it
+\RequirePackage{imperial-common}
 \ifxetex
   \RequirePackage{fontawesome}
 \else
   \newcommand{\faPhone}{Tel}
   \newcommand{\faEnvelope}{}
 \fi
-
-% Load last because it has the hyperref loading in it
-\RequirePackage{imperial-common}
 
 % Blank paper
 \DeclareOption{blank}{%
@@ -68,6 +67,35 @@
 \setlength{\parindent}{0mm}
 \setlength{\parskip}{3mm}
 
+%%%%%%%%%%%%%%%% Adjustment Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The letter has to have have the following (measured from the top):
+%	The bottom of the word 'Imperial' in the logo at 15mm
+%	The bottom of the date at 51mm
+%	The bottom of the 1st address line at 63mm
+%	The bottom of the salutation at 105mm
+%	The bottom of the department line (top right) at 12mm
+%	The bottom of the statutory footer 5.5mm from the bottom
+% 	The bottom of the first line of text on the second page at 51mm
+%	The margin at the left of the text should be 25mm
+%	The sender's detail (top right block) should be 90mm from the
+%	right edge.
+
+% The following are adjustable parameters to account for printer
+% differences. The values can be given in mm or pt
+% (a point is about .35 of a mm).
+
+% To move the printed page up (minus value) or down (plus value):
+\addtolength{\topmargin}{0mm}
+
+% To move the printed text to the right (plus) or left (minus).
+\addtolength{\evensidemargin}{0pt}
+\addtolength{\oddsidemargin}{0pt}
+
+% To move the statutory footer up (minus) or down (plus) - useful
+% if the printer will not print so close to the bottom of the page
+\addtolength{\footskip}{0mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % TeX parameters to account for odd formatting of headers
 \hbadness=10000 % Ignore underfull boxes
 \hfuzz=28mm % Allow over the margin text - needed for sender details
@@ -79,26 +107,26 @@
 \spaceskip\multiply\xspaceskip\thr@@\divide\xspaceskip\tw@
 \hyphenpenalty\@medpenalty\exhyphenpenalty\@highpenalty\let\informal\relax}
 
-\newcommand{\dept}{}
-\newcommand{\setdept}[1]{\renewcommand{\dept}{#1}}
-\newcommand{\address}{}
-\newcommand{\setaddress}[1]{\renewcommand{\address}{#1}}
-\newcommand{\telephone}{}
-\newcommand{\settelephone}[1]{\renewcommand{\telephone}{#1}}
-\newcommand{\fax}{}
-\newcommand{\setfax}[1]{\renewcommand{\fax}{#1}}
-\newcommand{\email}{}
-\newcommand{\setemail}[1]{\renewcommand{\email}{#1}}
-\newcommand{\web}{}
-\newcommand{\setweb}[1]{\renewcommand{\web}{#1}}
-\newcommand{\nametitle}{}
-\newcommand{\settitle}[1]{\renewcommand{\nametitle}{#1}}
-\newcommand{\postnoms}{}
-\newcommand{\setpostnoms}[1]{\renewcommand{\postnoms}{#1}}
-\newcommand{\jobtitle}{}
-\newcommand{\setjobtitle}[1]{\renewcommand{\jobtitle}{#1}}
-\newcommand{\signature}{}
-\newcommand{\setsignature}[1]{\renewcommand{\signature}{#1}}
+\newcommand{\@dept}{}
+\newcommand{\dept}[1]{\renewcommand{\@dept}{#1}}
+\newcommand{\@address}{}
+\newcommand{\address}[1]{\renewcommand{\@address}{#1}}
+\newcommand{\@telephone}{}
+\newcommand{\telephone}[1]{\renewcommand{\@telephone}{#1}}
+\newcommand{\@fax}{}
+\newcommand{\fax}[1]{\renewcommand{\@fax}{#1}}
+\newcommand{\@email}{}
+\newcommand{\email}[1]{\renewcommand{\@email}{#1}}
+\newcommand{\@web}{}
+\newcommand{\web}[1]{\renewcommand{\@web}{#1}}
+\newcommand{\@nametitle}{}
+\newcommand{\nametitle}[1]{\renewcommand{\@nametitle}{#1}}
+\newcommand{\@postnoms}{}
+\newcommand{\postnoms}[1]{\renewcommand{\@postnoms}{#1}}
+\newcommand{\@jobtitle}{}
+\newcommand{\jobtitle}[1]{\renewcommand{\@jobtitle}{#1}}
+\newcommand{\@signature}{}
+\newcommand{\signature}[1]{\renewcommand{\@signature}{#1}}
 \newlength{\sigwidth}
 \setlength{\sigwidth}{2in}
 
@@ -146,22 +174,22 @@
   \begin{minipage}[t]{90mm}
   \vspace*{-41.3mm}
   \fontsize{9}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  \dept\\
+  \@dept\\
   \college\\
 
-  \address\\
-  \faPhone\ \telephone\ifthenelse{\equal{\fax}{}}{}{, Fax \fax}\\
+  \@address\\
+  \faPhone\ \@telephone\ifthenelse{\equal{\@fax}{}}{}{, Fax \@fax}\\
 
-  \faEnvelope\ \href{mailto:\email}{\textcolor{black}{\email}}\\
-  \href{http://\web}{\textcolor{black}{\web}}\\
+  \faEnvelope\ \href{mailto:\@email}{\textcolor{black}{\@email}}\\
+  \href{http://\@web}{\textcolor{black}{\@web}}\\
 %  \vspace*{4mm}\\
 
   \fontsize{11}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  \textbf{\nametitle\ \@author}
+  \textbf{\@nametitle\ \@author}
   \fontsize{7}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  \textsc{\postnoms}\\
+  \textsc{\@postnoms}\\
   \fontsize{9}{11pt}%\usefont{OT1}{cmss}{m}{n}
-  \jobtitle\\
+  \@jobtitle\\
   \end{minipage}
  \end{tabular}
 }
@@ -171,10 +199,10 @@
 \begin{minipage}[t]{100mm}
 #1
 
-\ifthenelse{\equal{\signature}{}}{%
+\ifthenelse{\equal{\@signature}{}}{%
   \vspace{18mm}
 }{%
-  \includegraphics[width=\sigwidth]{\signature}
+  \includegraphics[width=\sigwidth]{\@signature}
 }
 
 \@author
