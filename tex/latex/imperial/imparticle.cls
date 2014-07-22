@@ -42,8 +42,9 @@
 
 
 % Make the title page
+\newcommand{\titlefont}{\bfseries\Huge\sffamily\color{ImperialBlue}}
 \renewcommand{\maketitle}{%
-  \noindent{\bfseries\Huge\sffamily\textcolor{ImperialBlue}{\@title}}\par
+  \noindent{\titlefont \@title}\par
   \vskip 2em 
   \noindent\Large\@author\\%
   \@date\par
