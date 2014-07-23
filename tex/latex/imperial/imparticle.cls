@@ -50,9 +50,11 @@
   \@date\par
   \vskip 1em  
   \ifthenelse{\boolean{useVC}}{%
-    \input{\vcfile}\noindent Version~\VCRevision}{}      
+    \IfFileExists{\vcfile}{%
+      \input{\vcfile}\noindent Version~\VCRevision}{%
+      \textcolor{red}{\vcfile\ missing}%
+      \ClassWarning{\vcfile missing}}}{}
   \normalsize\normalfont
-
 }
 
 \counterwithout{section}{chapter}
