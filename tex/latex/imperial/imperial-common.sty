@@ -14,6 +14,7 @@
 \definecolor{ImperialBlue}{rgb}{0.082,0.416,0.608}
 \definecolor{ImperialLightBlue}{rgb}{0.545,0.682,0.8}
 \definecolor{ImperialBrown}{rgb}{0.612,0.278,0.086}
+\definecolor{grey}{rgb}{0.9,0.9,0.9}
 
 % Change date style
 \RequirePackage{datetime}
@@ -34,6 +35,11 @@
 \else
   \PackageWarning{Custom fonts not supported.  Please use xelatex instead.}
 \fi
+
+% In all styles I'll want to do some listings
+\RequirePackage{listings}
+\lstset{backgroundcolor=\color{grey},
+  basicstyle=\ttfamily\footnotesize}
 
 % Set up hyperref style
 \RequirePackage{hyperref}
