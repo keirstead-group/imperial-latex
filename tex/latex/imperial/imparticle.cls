@@ -40,20 +40,31 @@
 \captiondelim{\quad}
 \hangcaption
 
+% For the headers
+% http://tex.stackexchange.com/questions/37868/fancyhdr-and-memoir
+\let\footruleskip\undefined % To avoid clash with memoir
+\RequirePackage{fancyhdr}
+\fancypagestyle{titlepage}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[R]{\ifthenelse{\boolean{useVC}}{%
+    \IfFileExists{\vcfile}{%
+      \input{\vcfile}\noindent\textcolor{gray}{\ttfamily\footnotesize Version~\VCRevision}}{%
+      \textcolor{red}{\vcfile\ missing}%
+      \ClassWarning{\vcfile missing}}}{}
+}
+}
+
 
 % Make the title page
 \newcommand{\titlefont}{\bfseries\Huge\sffamily\color{ImperialBlue}}
 \renewcommand{\maketitle}{%
+  \thispagestyle{titlepage}
   \noindent{\titlefont \@title}\par
   \vskip 2em 
   \noindent\Large\@author\\%
   \@date\par
   \vskip 1em  
-  \ifthenelse{\boolean{useVC}}{%
-    \IfFileExists{\vcfile}{%
-      \input{\vcfile}\noindent Version~\VCRevision}{%
-      \textcolor{red}{\vcfile\ missing}%
-      \ClassWarning{\vcfile missing}}}{}
   \normalsize\normalfont
 }
 
